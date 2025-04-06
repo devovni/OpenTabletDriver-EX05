@@ -3,9 +3,9 @@ if ! [ $(id -u) = 0 ]; then
    echo "The script need to be run as root." >&2
    exit 1
 fi
-#sudo dnf install "https://github.com/OpenTabletDriver/OpenTabletDriver/releases/download/v0.6.5.1/opentabletdriver-0.6.5.1-1.x86_64.rpm"
+sudo dnf install "https://github.com/OpenTabletDriver/OpenTabletDriver/releases/download/v0.6.5.1/opentabletdriver-0.6.5.1-1.x86_64.rpm"
 echo "Rebuilding Initramfs (takes a while)"
-#sudo dracut --regenerate-all --force
+sudo dracut --regenerate-all --force
 udev_rule="/etc/udev/rules.d/99-opentabletdriver.rules"
 if ! [ -f $udev_rule ]; then
   echo "Creating udev rule"
@@ -52,5 +52,5 @@ config_json='{
 }'
 echo "Writing configuration json."
 echo "$config_json" >> $config_folder/UGEE\ DrawImage\ EX05.json
-#sudo udevadm control --reload && sudo adevadm trigger
+sudo udevadm control --reload && sudo adevadm trigger
 echo "Done."
