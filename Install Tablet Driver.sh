@@ -9,9 +9,9 @@ sudo dracut --regenerate-all --force
 udev_rule="/etc/udev/rules.d/99-opentabletdriver.rules"
 if ! [ -f $udev_rule ]; then
   echo "Creating udev rule"
-  echo "KERNEL=="hidraw*", ATTRS{idVendor}=="5543", ATTRS{idProduct}=="0062", TAG+="uaccess", TAG+="udev-acl", MODE="0666"" >> $udev_rule
-  echo "SUBSYSTEM=="usb", ATTRS{idVendor}=="5543", ATTRS{idProduct}=="0062", TAG+="uaccess", TAG+="udev-acl", MODE="0666"" >> $udev_rule
-  echo "SUBSYSTEM=="input", ATTRS{idVendor}=="5543", ATTRS{idProduct}=="0062", ENV{LIBINPUT_IGNORE_DEVICE}="1"" >> $udev_rule
+  echo "KERNEL==\"hidraw*\", ATTRS{idVendor}==\"5543\", ATTRS{idProduct}==\"0062\", TAG+=\"uaccess\", TAG+=\"udev-acl\", MODE=\"0666\"" >> $udev_rule
+  echo "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"5543\", ATTRS{idProduct}==\"0062\", TAG+=\"uaccess\", TAG+=\"udev-acl\", MODE=\"0666\"" >> $udev_rule
+  echo "SUBSYSTEM==\"input\", ATTRS{idVendor}==\"5543\", ATTRS{idProduct}==\"0062\", ENV{LIBINPUT_IGNORE_DEVICE}=\"1\"" >> $udev_rule
 fi
 config_folder="/home/$SUDO_USER/.local/share/OpenTabletDriver/Configurations"
 if ! [ -d $config_folder ]; then
